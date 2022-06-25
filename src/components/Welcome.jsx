@@ -1,15 +1,17 @@
 import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import Robot from "../assets/robot.gif";
-import Logout from "./Logout";
 export default function Welcome() {
   const [userName, setUserName] = useState("");
-  useEffect(async () => {
+  useEffect(() => {
+    async function fetch(){
     setUserName(
       await JSON.parse(
         localStorage.getItem(process.env.REACT_APP_LOCALHOST_KEY)
       ).username
     );
+      }
+      fetch();
   }, []);
   return (
     <>
